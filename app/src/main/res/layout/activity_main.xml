@@ -7,6 +7,21 @@
     android:layout_height="match_parent"
     tools:context="com.airohm.arithmeticapp.MainActivity">
 
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="1"
+        android:inputType="number"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
     <android.support.constraint.Guideline
         android:id="@+id/guideline_main"
         android:layout_height="match_parent"
@@ -21,7 +36,8 @@
         app:layout_constraintTop_toBottomOf="@id/guideline_main"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/linearLayout">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,17 +47,20 @@
 
             <Button
                 android:id="@+id/button7"
-                android:text="7"
+                android:text="@string/seven"
+                android:onClick="numButtonPress"
                 style="@style/ButtonStyle"/>
 
             <Button
                 android:id="@+id/button8"
-                android:text="8"
+                android:text="@string/eight"
+                android:onClick="numButtonPress"
                 style="@style/ButtonStyle"/>
 
             <Button
                 android:id="@+id/button9"
-                android:text="9"
+                android:text="@string/nine"
+                android:onClick="numButtonPress"
                 style="@style/ButtonStyle"/>
         </LinearLayout>
 
@@ -53,17 +72,20 @@
 
             <Button
                 android:id="@+id/button4"
-                android:text="4"
+                android:text="@string/four"
+                android:onClick="numButtonPress"
                 style="@style/ButtonStyle"/>
 
             <Button
                 android:id="@+id/button5"
-                android:text="5"
+                android:text="@string/five"
+                android:onClick="numButtonPress"
                 style="@style/ButtonStyle"/>
 
             <Button
                 android:id="@+id/button6"
-                android:text="6"
+                android:text="@string/six"
+                android:onClick="numButtonPress"
                 style="@style/ButtonStyle"/>
         </LinearLayout>
 
@@ -75,17 +97,20 @@
 
             <Button
                 android:id="@+id/button1"
-                android:text="1"
+                android:text="@string/one"
+                android:onClick="numButtonPress"
                 style="@style/ButtonStyle"/>
 
             <Button
                 android:id="@+id/button2"
-                android:text="2"
+                android:text="@string/two"
+                android:onClick="numButtonPress"
                 style="@style/ButtonStyle"/>
 
             <Button
                 android:id="@+id/button3"
-                android:text="3"
+                android:text="@string/three"
+                android:onClick="numButtonPress"
                 style="@style/ButtonStyle"/>
         </LinearLayout>
 
@@ -99,7 +124,8 @@
 
             <Button
                 android:id="@+id/button0"
-                android:text="0"
+                android:text="@string/zero"
+                android:onClick="numButtonPress"
                 style="@style/ButtonStyle"/>
         </LinearLayout>
 
