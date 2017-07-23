@@ -7,27 +7,24 @@
     android:layout_height="match_parent"
     tools:context="com.airohm.arithmeticapp.MainActivity">
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="1"
-        android:inputType="number"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
     <android.support.constraint.Guideline
         android:id="@+id/guideline_main"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent=".40"/>
+
+    <LinearLayout
+        android:id="@+id/question_area"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/guideline_main"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="0dp"
@@ -128,7 +125,6 @@
                 android:onClick="numButtonPress"
                 style="@style/ButtonStyle"/>
         </LinearLayout>
-
 
     </LinearLayout>
 
