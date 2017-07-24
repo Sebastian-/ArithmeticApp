@@ -39,22 +39,4 @@
         android:layout_gravity="left">
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/ans1"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:textSize="35sp"/>
-
-    <TextView
-        android:id="@+id/ans2"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:textSize="35sp"/>
-
-    <TextView
-        android:id="@+id/ans3"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:textSize="35sp"/>
-
 </LinearLayout>
