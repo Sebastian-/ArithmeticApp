@@ -5,11 +5,17 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="ButtonStyle">
+    <style name="buttonStyle">
         <item name="android:textSize">45sp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_width">0dp</item>
+    </style>
+
+    <style name="questionStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">35sp</item>
     </style>
 
 </resources>

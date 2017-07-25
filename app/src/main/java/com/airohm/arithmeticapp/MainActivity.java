@@ -1,6 +1,5 @@
 package com.airohm.arithmeticapp;
 
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,24 +9,23 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 
-    TextView currentInputWidget;
-    DivisionQuestion currentQuestion;
-    ColorStateList defaultTextColors;
-    ViewGroup questionArea;
-    ViewGroup answerArea;
-    LayoutInflater inflater;
+    private TextView currentInputWidget;
+    private Question currentQuestion;
+    private int defaultTextColor;
+    private ViewGroup questionArea;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        inflater = getLayoutInflater();
         questionArea = (ViewGroup) findViewById(R.id.question_area);
-        assembleQuestion();
-        defaultTextColors = currentInputWidget.getTextColors();
+        setupQuestion();
+        defaultTextColor = currentInputWidget.getTextColors().getDefaultColor();
     }
 
     public void numButtonPress(View numButton) {
@@ -35,24 +33,37 @@ public class MainActivity extends AppCompatActivity {
         String input = b.getText().toString();
         if (currentQuestion.checkInput(input)) {
             // Input is correct
-            currentInputWidget.setTextColor(defaultTextColors);
+            currentInputWidget.setTextColor(defaultTextColor);
             currentInputWidget.setText(input);
             if (currentQuestion.isAnswered()) {
                 questionArea.removeAllViews();
-                assembleQuestion();
+                setupQuestion();
             }
-            currentInputWidget = currentQuestion.getInputWidget();
+            currentInputWidget = currentQuestion.getInputDisplayWidget();
         } else {
             currentInputWidget.setText(b.getText());
             currentInputWidget.setTextColor(Color.RED);
         }
     }
 
-    private void assembleQuestion() {
-        currentQuestion = new DivisionQuestion();
+    private void setupQuestion() {
+        LayoutInflater inflater = getLayoutInflater();
+        Random random = new Random();
+        switch (random.nextInt(4)) {
+            case 0:
+                currentQuestion = new DivisionQuestion();
+                break;
+            case 1:
+                currentQuestion = new AdditionQuestion();
+                break;
+            case 2:
+                currentQuestion = new SubtractionQuestion();
+                break;
+            case 3:
+                currentQuestion = new MultiplicationQuestion();
+                break;
+        }
         currentQuestion.renderQuestion(inflater, questionArea);
-        answerArea = (ViewGroup) findViewById(R.id.answer_area);
-        currentQuestion.prepAnswerWidgets(inflater, answerArea);
-        currentInputWidget = currentQuestion.getInputWidget();
+        currentInputWidget = currentQuestion.getInputDisplayWidget();
     }
 }

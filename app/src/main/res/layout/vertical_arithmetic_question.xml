@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/topNumber"
+        android:layout_centerHorizontal="true"
+        style="@style/questionStyle" />
+
+    <TextView
+        android:id="@+id/bottomNumber"
+        style="@style/questionStyle"
+        android:layout_alignRight="@id/topNumber"
+        android:layout_below="@id/topNumber" />
+
+    <TextView
+        android:id="@+id/operation"
+        style="@style/questionStyle"
+        android:layout_toLeftOf="@id/topNumber"
+        android:layout_alignBottom="@id/bottomNumber" />
+
+    <View
+        android:id="@+id/separator"
+        android:layout_width="0dp"
+        android:layout_height="2.5dp"
+        android:layout_below="@id/bottomNumber"
+        android:layout_alignLeft="@id/topNumber"
+        android:layout_alignRight="@id/topNumber"/>
+
+    <LinearLayout
+        android:id="@+id/answer_area"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/topNumber"
+        android:layout_below="@id/separator">
+    </LinearLayout>
+
+
+</RelativeLayout>

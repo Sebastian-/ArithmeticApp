@@ -5,21 +5,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 
-class DivisionQuestion {
+class DivisionQuestion implements Question {
 
     private String dividend;
     private String divisor;
     private char[] ans;
+    private ArrayList<TextView> answerWidgets;
     private int answerIndex;
-    private DivisionHolder UIHolder;
 
 
     // To avoid any GUI issues and make questions manageable, the divisor is limited to 1 digit,
     // and the answer to 3
-    DivisionQuestion() {
+    public DivisionQuestion() {
         Random random = new Random();
 
         int divisor = random.nextInt(9) + 1;
@@ -29,35 +30,34 @@ class DivisionQuestion {
         this.dividend = Integer.toString(dividend);
         this.divisor = Integer.toString(divisor);
         ans = Integer.toString(answer).toCharArray();
+        answerWidgets = new ArrayList<>();
         answerIndex = 0;
     }
 
-    View renderQuestion(LayoutInflater inflater, ViewGroup questionArea) {
-        View question = inflater.inflate(R.layout.division, questionArea);
+    public void renderQuestion(LayoutInflater inflater, ViewGroup questionArea) {
+        View divisionQuestion = inflater.inflate(R.layout.division, questionArea);
 
-        DivisionHolder holder = new DivisionHolder(question);
-        question.setTag(holder);
-        holder.question = question;
-        holder.num1.setText(dividend);
-        holder.num2.setText(divisor);
-        UIHolder = holder;
+        TextView dividend = (TextView) divisionQuestion.findViewById(R.id.dividend);
+        dividend.setText(this.dividend);
+        TextView divisor = (TextView) divisionQuestion.findViewById(R.id.divisor);
+        divisor.setText(this.divisor);
 
-        return question;
+        prepInputWidgets(inflater, (ViewGroup) divisionQuestion.findViewById(R.id.answer_area));
     }
 
-    void prepAnswerWidgets(LayoutInflater inflater, ViewGroup answerArea) {
+    private void prepInputWidgets(LayoutInflater inflater, ViewGroup answerArea) {
         for (char c : ans) {
-            TextView answerWidget = (TextView) inflater.inflate(R.layout.input_widget, answerArea, false);
-            answerArea.addView(answerWidget);
-            UIHolder.answer.add(answerWidget);
+            TextView inputWidget = (TextView) inflater.inflate(R.layout.digit_widget, answerArea, false);
+            answerArea.addView(inputWidget);
+            answerWidgets.add(inputWidget);
         }
     }
 
-    TextView getInputWidget() {
-        return UIHolder.answer.get(answerIndex);
+    public TextView getInputDisplayWidget() {
+        return answerWidgets.get(answerIndex);
     }
 
-    boolean checkInput(String input) {
+    public boolean checkInput(String input) {
         if (answerIndex < ans.length && String.valueOf(ans[answerIndex]).equals(input)) {
             answerIndex++;
             return true;
@@ -66,7 +66,7 @@ class DivisionQuestion {
         }
     }
 
-    boolean isAnswered() {
+    public boolean isAnswered() {
         return (answerIndex == ans.length);
     }
 
