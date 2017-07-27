@@ -20,7 +20,7 @@ class DivisionQuestion implements Question {
 
     // To avoid any GUI issues and make questions manageable, the divisor is limited to 1 digit,
     // and the answer to 3
-    public DivisionQuestion() {
+    DivisionQuestion() {
         Random random = new Random();
 
         int divisor = random.nextInt(9) + 1;
@@ -34,8 +34,8 @@ class DivisionQuestion implements Question {
         answerIndex = 0;
     }
 
-    public void renderQuestion(LayoutInflater inflater, ViewGroup questionArea) {
-        View divisionQuestion = inflater.inflate(R.layout.division, questionArea);
+    public View renderQuestion(LayoutInflater inflater, ViewGroup questionArea) {
+        View divisionQuestion = inflater.inflate(R.layout.division, questionArea, false);
 
         TextView dividend = (TextView) divisionQuestion.findViewById(R.id.dividend);
         dividend.setText(this.dividend);
@@ -43,6 +43,8 @@ class DivisionQuestion implements Question {
         divisor.setText(this.divisor);
 
         prepInputWidgets(inflater, (ViewGroup) divisionQuestion.findViewById(R.id.answer_area));
+
+        return divisionQuestion;
     }
 
     private void prepInputWidgets(LayoutInflater inflater, ViewGroup answerArea) {
