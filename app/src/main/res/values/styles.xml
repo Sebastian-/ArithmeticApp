@@ -12,10 +12,11 @@
         <item name="android:layout_width">0dp</item>
     </style>
 
-    <style name="questionStyle">
+    <style name="questionTextStyle">
+        <item name="android:textColor">@color/black</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">35sp</item>
+        <item name="android:textSize">50sp</item>
     </style>
 
 </resources>

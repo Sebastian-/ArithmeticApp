@@ -2,22 +2,19 @@ package com.airohm.arithmeticapp;
 
 import java.util.Random;
 
-/**
- * Created by Sebastian on 2017-07-26.
- */
-
-class SubtractionQuestion extends VerticalArithmeticQuestion {
+class SubtractionQuestion extends ArithmeticQuestion {
 
     SubtractionQuestion() {
         Random random = new Random();
 
-        int minuend = random.nextInt(9999) + 1;
+        int minuend = random.nextInt(999) + 1;
         int subtrahend = random.nextInt(minuend) + 1;
         int ans = minuend - subtrahend;
 
-        super.setTopNumber(Integer.toString(minuend));
-        super.setBottomNumber(Integer.toString(subtrahend));
-        super.setAns(Integer.toString(ans).toCharArray());
+        super.setNum1(minuend);
+        super.setNum2(subtrahend);
+        super.setAns(new RTLSingleLineAnswer(ans));
         super.setOpString(R.string.subtraction);
+        super.setLayoutResource(R.layout.vertical_arithmetic_question);
     }
 }

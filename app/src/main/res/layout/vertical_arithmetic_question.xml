@@ -5,36 +5,38 @@
     android:gravity="center">
 
     <TextView
-        android:id="@+id/topNumber"
+        android:id="@+id/num1"
         android:layout_centerHorizontal="true"
-        style="@style/questionStyle" />
+        style="@style/questionTextStyle" />
 
     <TextView
-        android:id="@+id/bottomNumber"
-        style="@style/questionStyle"
-        android:layout_alignRight="@id/topNumber"
-        android:layout_below="@id/topNumber" />
+        android:id="@+id/num2"
+        style="@style/questionTextStyle"
+        android:layout_alignRight="@id/num1"
+        android:layout_below="@id/num1" />
 
     <TextView
         android:id="@+id/operation"
-        style="@style/questionStyle"
-        android:layout_toLeftOf="@id/topNumber"
-        android:layout_alignBottom="@id/bottomNumber" />
+        android:paddingRight="5dp"
+        style="@style/questionTextStyle"
+        android:layout_toLeftOf="@id/num1"
+        android:layout_alignBottom="@id/num2" />
 
     <View
         android:id="@+id/separator"
+        android:background="@color/black"
         android:layout_width="0dp"
         android:layout_height="2.5dp"
-        android:layout_below="@id/bottomNumber"
-        android:layout_alignLeft="@id/topNumber"
-        android:layout_alignRight="@id/topNumber"/>
+        android:layout_below="@id/num2"
+        android:layout_alignLeft="@id/operation"
+        android:layout_alignRight="@id/num1"/>
 
     <LinearLayout
         android:id="@+id/answer_area"
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@id/topNumber"
+        android:layout_alignRight="@id/num1"
         android:layout_below="@id/separator">
     </LinearLayout>
 

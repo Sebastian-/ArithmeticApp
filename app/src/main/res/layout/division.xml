@@ -6,21 +6,23 @@
     android:layout_gravity="center">
 
     <TextView
-        android:id="@+id/dividend"
-        style="@style/questionStyle"/>
+        android:id="@+id/num1"
+        style="@style/questionTextStyle"/>
 
     <TextView
-        android:id="@+id/division"
-        style="@style/questionStyle"
+        android:id="@+id/operation"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        style="@style/questionTextStyle"
         android:text="@string/division"/>
 
     <TextView
-        android:id="@+id/divisor"
-        style="@style/questionStyle"/>
+        android:id="@+id/num2"
+        style="@style/questionTextStyle"/>
 
     <TextView
         android:id="@+id/equals"
-        style="@style/questionStyle"
+        style="@style/questionTextStyle"
         android:text="@string/equals"/>
 
     <LinearLayout

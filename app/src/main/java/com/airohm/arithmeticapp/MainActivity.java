@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private Question currentQuestion;
     private int defaultTextColor;
     private ViewGroup questionArea;
+    // used to suspend input while an animation is taking place
+    private boolean suspendInput = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +43,14 @@ public class MainActivity extends AppCompatActivity {
             currentInputWidget.setTextColor(defaultTextColor);
             currentInputWidget.setText(input);
             if (currentQuestion.isAnswered()) {
+                suspendInput = true;
                 ViewPropertyAnimator animator = questionView.animate().alpha(0);
-                animator.setDuration(350);
                 animator.setListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         questionArea.removeAllViews();
                         setupQuestion();
+                        suspendInput = false;
                     }
                 });
             } else {
@@ -58,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+            return suspendInput || super.dispatchTouchEvent(ev);
+    }
 
     private void setupQuestion() {
         LayoutInflater inflater = getLayoutInflater();
@@ -77,7 +85,16 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         questionView = currentQuestion.renderQuestion(inflater, questionArea);
+        questionView.setAlpha(0);
         questionArea.addView(questionView);
+        suspendInput = true;
+        ViewPropertyAnimator animator = questionView.animate().alpha(1);
+        animator.setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                suspendInput = false;
+            }
+        });
         currentInputWidget = currentQuestion.getInputDisplayWidget();
     }
 }
