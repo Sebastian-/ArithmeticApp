@@ -6,7 +6,7 @@ An Android application which randomly generates arithmetic questions.
 
 # Installation
 
-1. [Download](url) the standalone apk onto your phone.
+1. [Download](https://github.com/Sebastian-/ArithmeticApp/releases) the standalone apk onto your phone.
 2. Enable installation of apps from unknown sources by navigating to Settings -> Security.
 3. Use a file manager to navigate to the apk, and tap to install. 
 4. Once installed, the app can be found under the name "ArithmeticApp"
