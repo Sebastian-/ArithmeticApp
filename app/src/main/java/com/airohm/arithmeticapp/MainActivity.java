@@ -85,9 +85,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         questionView = currentQuestion.renderQuestion(inflater, questionArea);
+        suspendInput = true;
         questionView.setAlpha(0);
         questionArea.addView(questionView);
-        suspendInput = true;
         ViewPropertyAnimator animator = questionView.animate().alpha(1);
         animator.setListener(new AnimatorListenerAdapter() {
             @Override

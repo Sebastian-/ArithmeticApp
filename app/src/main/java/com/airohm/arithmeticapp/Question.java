@@ -5,15 +5,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-/**
- * Created by Sebastian on 2017-07-24.
- */
-
 interface Question {
 
     /* Parameters: inflater     - an instance of LayoutInflater
      *             questionArea - a reference to the parent container where the question will be displayed
-     * Effect:     the question view is added as a child of the question area container */
+     * Returns: A view containing all widgets required to display the question*/
     View renderQuestion(LayoutInflater inflater, ViewGroup questionArea);
 
     /* Returns a reference to the widget currently meant to display the next digit of input */
