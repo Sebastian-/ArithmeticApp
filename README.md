@@ -2,7 +2,7 @@
 
 An Android application which randomly generates arithmetic questions.
 
-![Arithmetic App Demo Gif](https://media.giphy.com/media/3oFzmhWpfZRqKpcZ6E/giphy.gif)
+![Arithmetic App Demo Gif](ArithmeticAppDemo.gif)
 
 
 ## Features
